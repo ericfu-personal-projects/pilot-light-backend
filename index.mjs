@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 let sequelize;
 let UserModel;
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 app.get('/users', (req, res) => {
   UserModel.findAll().then((users) => {
     res.json(users);
