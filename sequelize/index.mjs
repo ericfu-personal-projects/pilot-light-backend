@@ -52,12 +52,12 @@ export async function loadSequelize(parameterName, isLocal) {
   } else {
     console.log('connect to rds postgres');
     const paramsValue = await getParameterValue(parameterName);
-    const { endpoint, port, dbName, username } = JSON.parse(paramsValue);
+    const { endpoint, port, databaseName, username } = JSON.parse(paramsValue);
     const token = await getAuthToken({ hostname: endpoint, port, username });
 
     const caBundle = fs.readFileSync('./sequelize/us-east-1-bundle.pem');
 
-    sequelize = new Sequelize(dbName, username, token, {
+    sequelize = new Sequelize(databaseName, username, token, {
       dialect: 'postgres',
       host: endpoint,
       port,
