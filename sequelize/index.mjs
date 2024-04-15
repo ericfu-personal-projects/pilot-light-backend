@@ -29,7 +29,7 @@ async function getParameterValue(parameterName, WithDecryption = false) {
 // The token is valid for 15 minutes
 async function getAuthToken({ hostname, port, username }) {
   try {
-    const signer = new Signer({ hostname, port, username });
+    const signer = new Signer({ hostname, port, username, region });
     return await signer.getAuthToken();
   } catch (err) {
     console.error('Error getting auth token:', err);
