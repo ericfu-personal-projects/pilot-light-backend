@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application into the Docker image
 COPY . .
 
+# Download https://truststore.pki.rds.amazonaws.com/us-east-1/us-east-1-bundle.pem to sequelize folder
+RUN wget https://truststore.pki.rds.amazonaws.com/us-east-1/us-east-1-bundle.pem -O /app/sequelize/us-east-1-bundle.pem
+
 # Expose port 80 in the Docker image
 EXPOSE 80
 
