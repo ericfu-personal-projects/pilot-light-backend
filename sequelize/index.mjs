@@ -55,7 +55,7 @@ export async function loadSequelize(parameterName, isLocal) {
     const { endpoint, port, dbName, username } = JSON.parse(paramsValue);
     const token = await getAuthToken({ hostname: endpoint, port, username });
 
-    const caBundle = fs.readFileSync('./us-east-1-bundle.pem');
+    const caBundle = fs.readFileSync('./sequelize/us-east-1-bundle.pem');
 
     sequelize = new Sequelize(dbName, username, token, {
       dialect: 'postgres',
